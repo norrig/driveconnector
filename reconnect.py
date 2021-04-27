@@ -16,7 +16,7 @@ def mapDrive(drive, networkPath, user, password, force=1):
     if (os.path.exists(networkPath)):
         print ("...")
         try:
-            subprocess.call(r'net use '+drive+ ' \\\\DK-FILE-02\\Shares\\IT', shell=True,stdout=subprocess.DEVNULL)
+            subprocess.call(r'net use '+drive+ ' \\\\Konstruktion\\Solidworks', shell=True,stdout=subprocess.DEVNULL)
         except Exception as E:
             print(E)
             return -1
@@ -29,12 +29,12 @@ def mapDrive(drive, networkPath, user, password, force=1):
 
 print("Prøver at mappe drevet (Prøver 8 gange i alt)")
 
-result = mapDrive("A:","\\\\DK-FILE-02\\Shares", "","")
+result = mapDrive("P:","\\\\Konstruktion\\Solidworks", "","")
 if result == "Fail":
     for x in range(1,8):
         print("Fejlede, prøver igen...")
         print("Prøver forsøg "+str(x)+ " af 8")
-        retry = mapDrive("A:","\\\\DK-FILE-02\\Shares", "","") 
+        retry = mapDrive("P:","\\\\Konstruktion\\Solidworks", "","") 
         if retry == "Success":
             print("Alles gut, drevet er nu mapped og klar til brug") 
             time.sleep(3)
